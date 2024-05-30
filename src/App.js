@@ -1,9 +1,31 @@
+import { useEffect, useState } from 'react';
 import './App.css'
 
 function App() {
+  const [words, setWords] = useState(null);
+
+
+  const generateRandomIndex = ({wordsArrLength}) => {
+    const index = Math.floor(Math.random() * wordsArrLength);
+    return index;
+  }
+
+
+  useEffect(() => {
+  fetch("http://localhost:3001/solutions")
+    .then(res => res.json())
+    .then(wordsArr => { 
+      const randomIndex = generateRandomIndex({ wordsArrLength: wordsArr.length });
+      setWords(wordsArr[randomIndex].word);
+      console.log(words)
+    })      
+  },[setWords])
+  
+
   return (
     <div className="App">
       <h1>Wordle (Lingo)</h1>
+      {words && <div>{ words}</div>}
     </div>
   );
 }
