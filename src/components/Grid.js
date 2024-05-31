@@ -6,7 +6,7 @@ function Grid({currentGuess,guessHistoryArr, guessNumber}) {
     <div>
           {guessHistoryArr.map((guess,index) => {
               return (
-                  <Row key={ index} />
+                  <Row key={ index} guess= {guess} />
               )
          })} 
     </div>
