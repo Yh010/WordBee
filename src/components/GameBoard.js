@@ -7,15 +7,23 @@ function GameBoard({ words }) {
     const { currentGuess, handleKeyUp,guessHistoryArr,isCorrect,guessNumber,keysUsed } = HandleKeyStrokes(words);
 
    useEffect(() => {
-        window.addEventListener("keyup", handleKeyUp);
-        return () => {
-            window.removeEventListener("keyup", handleKeyUp);
-        }
-   }, [handleKeyUp]);
+     window.addEventListener("keyup", handleKeyUp);
+     
+     if (isCorrect) {
+       console.log("winner")
+        window.removeEventListener("keyup", handleKeyUp); 
+     }
+
+     if (guessNumber > 5) {
+         console.log("out of guesses")
+       window.removeEventListener("keyup", handleKeyUp); 
+     }
+      return () => {
+        window.removeEventListener("keyup", handleKeyUp);
+      }
+   }, [handleKeyUp,isCorrect,guessNumber]);
   
-  useEffect(() => {
-    console.log(guessHistoryArr,isCorrect,guessNumber)
-  },[guessHistoryArr,isCorrect,guessNumber])
+
   return (
     <div>
         <div>
