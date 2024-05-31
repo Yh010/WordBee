@@ -12,13 +12,33 @@ export const HandleKeyStrokes = ({words}) => {
     //format each guess into an array of letters
 
     const formatGuess = () => {
-        
+        console.log("reached here "+ {currentGuess})
     }
 
     const addNewGuess = () => {
 
     }
     const handleKeyUp = ({ key }) => {
+
+        if (key === 'Enter') {
+            if (guessNumber > 5) {
+                console.log("used all of ur guesses")
+                return
+            }
+
+            if (guessHistoryString.includes(currentGuess)) {
+                console.log("word is already tried")
+                return
+            }
+
+            if (currentGuess.length !== 5) {
+                console.log("enter 5 letter word")
+                return
+            }
+
+            formatGuess()
+        }
+
         if (key === 'Backspace') {
             setcurrentGuess((prev) => {
                return prev.slice(0,-1)
