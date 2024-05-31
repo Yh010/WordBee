@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { HandleKeyStrokes } from '../hooks/handleKeyStrokes'
+import Grid from './Grid';
 
 function GameBoard({ words }) {
     const { currentGuess, handleKeyUp,guessHistoryArr,isCorrect,guessNumber } = HandleKeyStrokes(words);
@@ -19,7 +20,8 @@ function GameBoard({ words }) {
         <div>
             solution word is :{words}       
         </div>
-        <div>your current guess is : {currentGuess}</div>
+      <div>your current guess is : {currentGuess}</div>
+      <Grid currentGuess={currentGuess} guessHistoryArr={guessHistoryArr} guessNumber={ guessNumber}/>
     </div>
      
   )
