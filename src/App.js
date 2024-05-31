@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css'
 import GameBoard from './components/GameBoard';
-import Keypad from './components/Keypad';
 
 function App() {
   const [words, setWords] = useState(null);
@@ -28,7 +27,7 @@ function App() {
     <div className="App">
       <h1>WordBee</h1>
       {words ? <GameBoard words={words} /> : "Loading game...please wait"}
-      <Keypad/>
+      
     </div>
   );
 }

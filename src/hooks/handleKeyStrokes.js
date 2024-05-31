@@ -7,6 +7,7 @@ export const HandleKeyStrokes = (words) => {
     const [guessHistoryArr, setGuessHistoryArr] = useState([...Array(6)]) // each guess will be stored as array
     const [guessHistoryString, setGuessHistoryString] = useState([]) // each guess will be stored as string
     const [isCorrect, setIsCorrect] = useState(false);
+    const [keysUsed, setKeysUsed] = useState({})
 
     // Format each guess into an array of letter objects
     const formatGuess = () => {
@@ -48,6 +49,26 @@ export const HandleKeyStrokes = (words) => {
         });
 
         setGuessNumber((prevNumber) => prevNumber + 1);
+        setKeysUsed((prevUsedKeys) => {
+            let newKeys = { ...prevUsedKeys };
+            formattedGuessArr.forEach((l) => {
+                const currcolor = newKeys[l.key]
+
+                if (l.color === 'green') {
+                    newKeys[l.key] = 'green'
+                    return
+                }
+                if (l.color === 'yellow' && currcolor !=='green') {
+                    newKeys[l.key] = 'yellow'
+                    return
+                }
+                if (l.color === 'grey' && currcolor !=='green' && currcolor !=='yellow') {
+                    newKeys[l.key] = 'grey'
+                    return
+                }
+            })
+            return newKeys;
+        })
         setCurrentGuess(''); 
     };
 
@@ -84,5 +105,5 @@ export const HandleKeyStrokes = (words) => {
         }
     };
 
-    return { guessNumber, currentGuess, guessHistoryArr, isCorrect, handleKeyUp };
+    return { guessNumber, currentGuess, guessHistoryArr, isCorrect,keysUsed, handleKeyUp };
 };
