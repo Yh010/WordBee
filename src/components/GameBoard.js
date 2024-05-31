@@ -2,14 +2,18 @@ import React, { useEffect } from 'react'
 import { HandleKeyStrokes } from '../hooks/handleKeyStrokes'
 
 function GameBoard({ words }) {
-    const { currentGuess, handleKeyUp } = HandleKeyStrokes(words);
+    const { currentGuess, handleKeyUp,guessHistoryArr,isCorrect,guessNumber } = HandleKeyStrokes(words);
 
    useEffect(() => {
         window.addEventListener("keyup", handleKeyUp);
         return () => {
             window.removeEventListener("keyup", handleKeyUp);
         }
-    }, [handleKeyUp]);
+   }, [handleKeyUp]);
+  
+  useEffect(() => {
+    console.log(guessHistoryArr,isCorrect,guessNumber)
+  },[guessHistoryArr,isCorrect,guessNumber])
   return (
     <div>
         <div>
