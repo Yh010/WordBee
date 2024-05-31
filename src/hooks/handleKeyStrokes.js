@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export const HandleKeyStrokes = ({words}) => {
+export const HandleKeyStrokes = (words) => {
     
     const [guessNumber, setGuessNumber] = useState(0);
     const [currentGuess, setcurrentGuess] = useState("");
@@ -12,7 +12,25 @@ export const HandleKeyStrokes = ({words}) => {
     //format each guess into an array of letters
 
     const formatGuess = () => {
-        console.log("reached here "+ {currentGuess})
+        let wordArr = [...words];
+        let formattedGuessArr = [...currentGuess].map((letter) => {
+            return ({key: letter , color: "grey"})
+        });
+        
+        formattedGuessArr.forEach((letter,i) => {
+            if (wordArr[i] === letter.key) {
+                formattedGuessArr[i].color = "green";
+                wordArr[i] = null;
+            }
+        })
+        formattedGuessArr.forEach((letter,i) => {
+            if (wordArr.includes(letter.key) && letter.color !== 'green' ) {
+                formattedGuessArr[i].color = "yellow";
+                wordArr[wordArr.indexOf(letter.key)] = null;
+            }
+        })
+
+        return formattedGuessArr
     }
 
     const addNewGuess = () => {
@@ -36,7 +54,8 @@ export const HandleKeyStrokes = ({words}) => {
                 return
             }
 
-            formatGuess()
+            const intermediateAnswer = formatGuess();
+            console.log(intermediateAnswer)
         }
 
         if (key === 'Backspace') {

@@ -13,7 +13,7 @@ function GameBoard({ words }) {
   return (
     <div>
         <div>
-            {words}       
+            solution word is :{words}       
         </div>
         <div>your current guess is : {currentGuess}</div>
     </div>
