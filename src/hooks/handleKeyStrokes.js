@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export const HandleKeyStrokes = (words) => {
+export const HandleKeyStrokes = ({words}) => {
     
     const [guessNumber, setGuessNumber] = useState(0);
     const [currentGuess, setcurrentGuess] = useState("");
@@ -18,10 +18,23 @@ export const HandleKeyStrokes = (words) => {
     const addNewGuess = () => {
 
     }
-    
-    const handleKeyUp = () => {
+    const handleKeyUp = ({ key }) => {
+        if (key === 'Backspace') {
+            setcurrentGuess((prev) => {
+               return prev.slice(0,-1)
+            })
+            return
+       }
         
-    }
+        if (/^[A-Za-z]$/.test(key)){
+            if (currentGuess.length < 5) {
+                setcurrentGuess((prev) => {
+                    return prev + key;
+                })
+            }
+        }
+        
+    };
 
     return {guessNumber,currentGuess,guessHistoryArr,isCorrect,handleKeyUp}
 }
