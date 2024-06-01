@@ -3,6 +3,9 @@ import './Instructions.css';
 import { IoIosRefresh } from "react-icons/io";
 
 const Instructions = () => {
+   const handleRefresh = () => {
+    window.location.reload();
+  };
   return (
     <div className="instructions">
       <div className="instruction-item">
@@ -17,9 +20,11 @@ const Instructions = () => {
         <div className="square green"></div>
         <span>Letter is correctly placed</span>
           </div>
-        <div className="instruction-item">
+        <div className="instruction-item" onClick={handleRefresh}>
             <IoIosRefresh />
-            <span> Refresh to play again</span>
+        <span>
+          <button>Refresh to play again
+        </button></span>
       </div>
     </div>
   );
