@@ -80,12 +80,12 @@ export const HandleKeyStrokes = (words) => {
             }
 
             if (guessHistoryString.includes(currentGuess)) {
-                console.log("You already tried that word.");
+                alert("You already tried that word.");
                 return;
             }
 
             if (currentGuess.length !== 5) {
-                console.log("Word must be 5 characters long.");
+                alert("Word must be 5 characters long.");
                 return;
             }
 

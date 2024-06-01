@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css'
 import GameBoard from './components/GameBoard';
+import Navbar from './components/Navbar';
 
 function App() {
   const [words, setWords] = useState(null);
@@ -25,7 +26,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>WordBee</h1>
+     <Navbar/>
       {words ? <GameBoard words={words} /> : "Loading game...please wait"}
       
     </div>

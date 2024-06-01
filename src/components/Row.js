@@ -18,6 +18,7 @@ function Row({ guess,currentGuess }) {
         let letters = currentGuess.split('');
         return (
             <div className='Row currentGuess'>
+                <h4>Your latest guess is:  </h4>     
                 {letters.map((letter,index) => (
                     <div key={index} className='filled'>
                         {letter}
