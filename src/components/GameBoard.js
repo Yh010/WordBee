@@ -38,7 +38,7 @@ function GameBoard({ words }) {
       <div>
         <p>Welcome to the challenge of decoding a 5-letter word. You've got 6 opportunities to unravel the mystery. Here's how it goes:</p>
         <Instructions/>
-        {console.log(words)}
+        
         <p>Remaining attempts: { 6-guessNumber}</p>
         
         </div>

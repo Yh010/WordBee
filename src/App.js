@@ -7,7 +7,7 @@ function App() {
   const [words, setWords] = useState(null);
 
 
-  const generateRandomIndex = ({wordsArrLength}) => {
+  const generateRandomIndex = ({ wordsArrLength }) => {
     const index = Math.floor(Math.random() * wordsArrLength);
     return index;
   }
@@ -19,7 +19,7 @@ function App() {
     .then(wordsArr => { 
       const randomIndex = generateRandomIndex({ wordsArrLength: wordsArr.length });
       setWords(wordsArr[randomIndex].word);
-      console.log(words)
+      
     })      
   },[setWords])
   
