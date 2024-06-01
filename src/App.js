@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css'
 import GameBoard from './components/GameBoard';
 import Navbar from './components/Navbar';
+import wordsData from './db/db.json';
 
 function App() {
   const [words, setWords] = useState(null);
@@ -12,15 +13,16 @@ function App() {
     return index;
   }
 
+  const fetchRandomWord = () => {
+    const wordsArr = wordsData.solutions;
+    console.log(wordsArr)
+    const randomIndex = Math.floor(Math.random() * wordsArr.length);
+    const randomWord = wordsArr[randomIndex].word;
+    setWords(randomWord);
+  };
 
   useEffect(() => {
-  fetch("http://localhost:3001/solutions")
-    .then(res => res.json())
-    .then(wordsArr => { 
-      const randomIndex = generateRandomIndex({ wordsArrLength: wordsArr.length });
-      setWords(wordsArr[randomIndex].word);
-      
-    })      
+    fetchRandomWord();
   },[setWords])
   
 
@@ -28,7 +30,7 @@ function App() {
     <div className="App">
      <Navbar/>
       {words ? <GameBoard words={words} /> : "Loading game...please wait"}
-      
+      {console.log(words)}
     </div>
   );
 }
