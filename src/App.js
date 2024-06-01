@@ -15,7 +15,7 @@ function App() {
 
   const fetchRandomWord = () => {
     const wordsArr = wordsData.solutions;
-    console.log(wordsArr)
+    
     const randomIndex = Math.floor(Math.random() * wordsArr.length);
     const randomWord = wordsArr[randomIndex].word;
     setWords(randomWord);
@@ -30,7 +30,7 @@ function App() {
     <div className="App">
      <Navbar/>
       {words ? <GameBoard words={words} /> : "Loading game...please wait"}
-      {console.log(words)}
+      
     </div>
   );
 }
