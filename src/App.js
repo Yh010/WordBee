@@ -8,11 +8,6 @@ function App() {
   const [words, setWords] = useState(null);
 
 
-  const generateRandomIndex = ({ wordsArrLength }) => {
-    const index = Math.floor(Math.random() * wordsArrLength);
-    return index;
-  }
-
   const fetchRandomWord = () => {
     const wordsArr = wordsData.solutions;
     

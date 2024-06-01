@@ -14,7 +14,7 @@ const Navbar = () => {
               <MadeWithLove by="Yash Hegde" emoji />
             </a>
           </li>
-        </ul>
+        </ul> 
       </div>
     </nav>
   );
